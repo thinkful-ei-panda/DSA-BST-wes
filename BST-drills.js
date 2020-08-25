@@ -56,6 +56,20 @@ function height(tree) {
 //     }
 //   }
 
+function minHeight(tree) {
+    if(!tree) {
+      return -1;
+    }
+    let left = height(tree.left)
+    let right = height(tree.right)
+    if(left < right) {
+      return left + 1
+    }
+    else {
+      return right + 1
+    }
+  }
+
 function main() {
     let bst = new BST()
 
@@ -63,7 +77,13 @@ function main() {
     bst.insert(1)
     bst.insert(4)
     bst.insert(6)
-    bst.insert(9)
+    bst.insert(9)    
+    bst.insert(2)
+    bst.insert(5)
+    bst.insert(7)
+
+
+
 
 
     console.log(height(bst))
