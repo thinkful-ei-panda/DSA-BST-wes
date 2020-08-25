@@ -103,6 +103,7 @@ function balancedBst(tree){
     let diff = height(tree) - minHeight(tree)
     return(!(diff > 1));
 }
+
   
 
 function main() {
