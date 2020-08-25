@@ -16,7 +16,7 @@ const BST = require("./binary-tree")
 
 //4. returns the total value of the tree
 
-//#5
+//5.
 function height(tree) {
     if(tree.key === null) {
         return 0
@@ -70,6 +70,41 @@ function minHeight(tree) {
     }
   }
 
+
+//6.
+function isBst(tree){
+    if(tree === null){
+      return true;
+    }
+    if(!tree.left && !tree.right){
+      return true;
+    }
+    if(tree.left && tree.left.key > tree.key){
+      return false;
+    }
+    if(tree.right && tree.right.key < tree.key){
+      return false;
+    }
+    return isBst(tree.left) && isBst(tree.right);
+  }
+
+//7.
+function thirdLargest(tree) {
+    let largest = tree._findMax()
+    tree.remove(largest.key)
+    let second = tree._findMax()
+    tree.remove(second.key)
+    let third = tree._findMax()
+    return third.key
+}
+
+//8.
+function balancedBst(tree){
+    let diff = height(tree) - minHeight(tree)
+    return(!(diff > 1));
+}
+  
+
 function main() {
     let bst = new BST()
 
@@ -83,10 +118,17 @@ function main() {
     bst.insert(7)
 
 
-
-
-
+    console.log(isBst(bst))
     console.log(height(bst))
+    console.log(minHeight(bst))
+    console.log(balancedBst(bst))
+
+
+    console.log(thirdLargest(bst))
+    console.log(height(bst))
+    console.log(balancedBst(bst))
+
+
 }
 
 main()
